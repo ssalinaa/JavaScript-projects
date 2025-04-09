@@ -1,0 +1,1192 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        body { margin: 0; }
+        canvas { width: 100%; height: 100% }
+    </style>
+</head>
+<body>
+    <script src="three.min.js"></script>
+    <script>
+
+        var renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.setAnimationLoop( drawFrame );
+        document.body.appendChild( renderer.domElement );
+
+        var scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0C090A);
+
+        var aspect = window.innerWidth/window.innerHeight;
+        var camera = new THREE.PerspectiveCamera( 30, aspect );
+        camera.position.set(0, 40, 70);
+        camera.lookAt( new THREE.Vector3() );
+
+        // Най-долна част
+        var geometry = new THREE.BoxGeometry(42, 0.3, 30);
+        var material = new THREE.MeshPhongMaterial({color : 0x2B1B17});
+        var box = new THREE.Mesh(geometry, material);
+        box.position.x = 2;
+        scene.add(box);
+
+        // Средна част
+        geometry = new THREE.BoxGeometry(8, 5, 6);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 1;
+        box.position.y = 2.5;
+        box.position.z = -0.7;
+        scene.add(box);
+
+        // Странична лява част
+        geometry = new THREE.BoxGeometry(7, 5, 4);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -5;
+        box.position.y = 2.5;
+        box.position.z = -1.2;
+        box.rotation.y = -0.2; 
+        scene.add(box);
+
+         // Странична дясна част
+        geometry = new THREE.BoxGeometry(7, 5, 4);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 7;
+        box.position.y = 2.5;
+        box.position.z = -0.7;
+        box.rotation.y = 0.2; 
+        scene.add(box);
+
+        // Горна част
+        geometry = new THREE.CylinderGeometry(2, 2, 12, 32);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = 1.2;
+        cylinder.position.y = 6;
+        cylinder.position.z = -0.7;
+        scene.add(cylinder);
+
+        geometry = new THREE.CylinderGeometry(1.5, 1, 6, 32);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = -1.8;
+        cylinder.position.y = 6;
+        cylinder.position.z = -0.7; 
+        scene.add(cylinder);
+
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = 4.2;
+        cylinder.position.y = 6;
+        cylinder.position.z = -0.7;
+        scene.add(cylinder);
+
+        // Задни кули
+        geometry = new THREE.CylinderGeometry(2.2, 2.2, 9, 32);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = 6.8;
+        cylinder.position.y = 5;
+        cylinder.position.z = -4.8;
+        scene.add(cylinder);
+
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = -5;
+        cylinder.position.y = 5;
+        cylinder.position.z = -4.8;
+        scene.add(cylinder);
+
+        // Предни кули
+        geometry = new THREE.CylinderGeometry(1, 1, 7, 32);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = 5.8;
+        cylinder.position.y = 3.5;
+        cylinder.position.z = 1.8; 
+        scene.add(cylinder);
+
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = -4;
+        cylinder.position.y = 3.5;
+        cylinder.position.z = 1.8;
+        scene.add(cylinder);
+
+        // Странични кули
+        geometry = new THREE.CylinderGeometry(1.7, 1.7, 7, 32);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = -10;
+        cylinder.position.y = 3.5;
+        cylinder.position.z = -2;
+        scene.add(cylinder);
+
+        geometry = new THREE.CylinderGeometry(1.7, 1.7, 7, 32);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = 12;
+        cylinder.position.y = 3.5;
+        cylinder.position.z = -2;
+        scene.add(cylinder);
+        
+        // Централна предна стена
+        geometry = new THREE.BoxGeometry(0.95, 0.8, 0.5);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -2.55;
+        box.position.y = 5.4;
+        box.position.z = 2.05;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -1.4;
+        box.position.y = 5.4;
+        box.position.z = 2.05;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -0.2;
+        box.position.y = 5.4;
+        box.position.z = 2.05;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 0.95;
+        box.position.y = 5.4;
+        box.position.z = 2.05;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 2.1;
+        box.position.y = 5.4;
+        box.position.z = 2.05;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 3.3;
+        box.position.y = 5.4;
+        box.position.z = 2.05;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 4.5;
+        box.position.y = 5.4;
+        box.position.z = 2.05;
+        scene.add(box);
+
+        // Дясна предна стена
+        group = new THREE.Group();
+        scene.add(group);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 5.45;
+        box.position.y = 5.4;
+        box.position.z = 1.42;
+        box.rotation.y = 0.2;
+        group.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 6.65;
+        box.position.y = 5.4;
+        box.position.z = 1.16;
+        box.rotation.y = 0.2;
+        group.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 7.85;
+        box.position.y = 5.4;
+        box.position.z = 0.92;
+        box.rotation.y = 0.2;
+        group.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 9.05;
+        box.position.y = 5.4;
+        box.position.z = 0.67;
+        box.rotation.y = 0.2;
+        group.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 10.31;
+        box.position.y = 5.4;
+        box.position.z = 0.42;
+        box.rotation.y = 0.2;
+        group.add(box);
+
+        // Централна задна стена
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -2.55;
+        box.position.y = 5.4;
+        box.position.z = -3.45;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -1.4;
+        box.position.y = 5.4;
+        box.position.z = -3.45;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -0.2;
+        box.position.y = 5.4;
+        box.position.z = -3.45;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 0.95;
+        box.position.y = 5.4;
+        box.position.z = -3.45;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 2.1;
+        box.position.y = 5.4;
+        box.position.z = -3.45;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 3.3;
+        box.position.y = 5.4;
+        box.position.z = -3.45;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 4.5;
+        box.position.y = 5.4;
+        box.position.z = -3.45;
+        scene.add(box);
+
+        // Дясна задна стена
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 5.85;
+        box.position.y = 5.4;
+        box.position.z = -2.3;
+        box.rotation.y = 0.1;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 7.15;
+        box.position.y = 5.4;
+        box.position.z = -2.55;
+        box.rotation.y = 0.2;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 8.35;
+        box.position.y = 5.4;
+        box.position.z = -2.8;
+        box.rotation.y = 0.2;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 9.63;
+        box.position.y = 5.4;
+        box.position.z = -3.03;
+        box.rotation.y = 0.2;
+        scene.add(box);
+
+        // Централна странична стена
+        geometry = new THREE.BoxGeometry(0.5, 0.8, 0.95);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 4.68;
+        box.position.y = 5.4;
+        box.position.z = 1.75;
+        box.rotation.y = 0.1;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 4.73;
+        box.position.y = 5.4;
+        box.position.z = -2.8;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -2.77;
+        box.position.y = 5.4;
+        box.position.z = 1.45;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -2.8;
+        box.position.y = 5.4;
+        box.position.z = -3;
+        scene.add(box);
+
+        // Дясна странична стена
+        geometry = new THREE.BoxGeometry(0.5, 0.8, 0.5);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 10.48;
+        box.position.y = 5.4;
+        box.position.z = 0.1;
+        box.rotation.y = 0.2;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 9.9;
+        box.position.y = 5.4;
+        box.position.z = -2.8;
+        box.rotation.y = 0.2;
+        scene.add(box);
+
+        geometry = new THREE.BoxGeometry(0.5, 0.8, 0.95);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 10.3;
+        box.position.y = 5.4;
+        box.position.z = -0.8;
+        box.rotation.y = 0.2;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 10.08;
+        box.position.y = 5.4;
+        box.position.z = -1.93;
+        box.rotation.y = 0.2;
+        scene.add(box);
+
+        // Лява предна стена
+        group = group.clone();
+        scene.add(group);
+        group.position.x = -12.8;
+        group.position.y = -0.1;
+        group.position.z = -3.5;
+        group.rotation.y = -0.4;
+
+        // Лява задна стена
+        geometry = new THREE.BoxGeometry(0.5, 0.8, 0.95);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        cube = new THREE.Mesh(geometry, material);
+        cube.position.x = -7.62;
+        cube.position.y = 5.4;
+        cube.position.z = -3.55;
+        cube.rotation.y = -1.75;
+        scene.add(cube);
+
+        cube = new THREE.Mesh(geometry, material);
+        cube.position.x = -6.36;
+        cube.position.y = 5.4;
+        cube.position.z = -3.25;
+        cube.rotation.y = -1.75;
+        scene.add(cube);
+
+        cube = new THREE.Mesh(geometry, material);
+        cube.position.x = -5.15;
+        cube.position.y = 5.45;
+        cube.position.z = -2.95;
+        cube.rotation.y = -1.75;
+        scene.add(cube);
+
+        cube = new THREE.Mesh(geometry, material);
+        cube.position.x = -3.8;
+        cube.position.y = 5.5;
+        cube.position.z = -2.65;
+        cube.rotation.y = -1.75;
+        scene.add(cube);
+
+        // Лява странична стена
+        geometry = new THREE.BoxGeometry(0.95, 0.8, 0.5);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -7.95;
+        box.position.y = 5.4;
+        box.position.z = -3;
+        box.rotation.y = 1.35;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -8.2;
+        box.position.y = 5.4;
+        box.position.z = -1.8;
+        box.rotation.y = 1.35;
+        scene.add(box);
+
+        geometry = new THREE.BoxGeometry(0.5, 0.8, 0.95);
+        material = new THREE.MeshPhongMaterial({color : 0x3A3B3C});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -8.5;
+        box.position.y = 5.3;
+        box.position.z = -0.7;
+        box.rotation.y = -0.2;
+        scene.add(box);
+
+       // Покривите
+        geometry = new THREE.CylinderGeometry(1.8, 0.1, 4, 32);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = 5.8;
+        cylinder.position.y = 8.3;
+        cylinder.position.z = 2; 
+        cylinder.rotation.x = 3.15; 
+        scene.add(cylinder);
+
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = -4;
+        cylinder.position.y = 8.4;
+        cylinder.position.z = 2; 
+        cylinder.rotation.x = 3.15; 
+        scene.add(cylinder);
+
+        geometry = new THREE.CylinderGeometry(1.8, 0.1, 2.5, 32);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = -1.9;
+        cylinder.position.y = 10.2;
+        cylinder.position.z = -0.7; 
+        cylinder.rotation.x = 3.15; 
+        scene.add(cylinder);
+
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = 4.3;
+        cylinder.position.y = 10;
+        cylinder.position.z = -0.7; 
+        cylinder.rotation.x = 3.15; 
+        scene.add(cylinder);
+
+        geometry = new THREE.CylinderGeometry(2.5, 0.1, 5, 32);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = 12;
+        cylinder.position.y = 9;
+        cylinder.position.z = -2.2; 
+        cylinder.rotation.x = 3.15; 
+        scene.add(cylinder);
+
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = -10;
+        cylinder.position.y = 9.2;
+        cylinder.position.z = -2.2; 
+        cylinder.rotation.x = 3.15; 
+        scene.add(cylinder);
+
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = 6.8;
+        cylinder.position.y = 12;
+        cylinder.position.z = -4.8;
+        cylinder.rotation.x = 3.15;
+        scene.add(cylinder);
+
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = -5;
+        cylinder.position.y = 12;
+        cylinder.position.z = -4.8;
+        cylinder.rotation.x = 3.15;
+        scene.add(cylinder);
+
+        cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.x = 1.2;
+        cylinder.position.y = 14.5;
+        cylinder.position.z = -0.7;
+        cylinder.rotation.x = 3.15;
+        scene.add(cylinder);
+
+        // Прозорци
+        var group = new THREE.Group();
+        scene.add(group);
+
+        var light = new THREE.PointLight(0xE66C2C);
+	    group.add( light );
+
+        geometry = new THREE.PlaneGeometry( 1.5, 2 );
+        material = new THREE.MeshBasicMaterial( {color: 0xE66C2C, side: THREE.DoubleSide} );
+        windoww = new THREE.Mesh( geometry, material );
+        windoww.position.x = 1.2;
+        windoww.position.y = 9;
+        windoww.position.z = 1.3;
+        group.add(windoww);
+
+        geometry = new THREE.CircleGeometry( 0.75, 32, 0, Math.PI ); 
+        material = new THREE.MeshBasicMaterial( { color: 0xE66C2C } );  
+        circle = new THREE.Mesh( geometry, material ); 
+        circle.position.x = 1.2;
+        circle.position.y = 10;
+        circle.position.z = 1.3;
+        group.add(circle);
+
+        geometry = new THREE.BoxGeometry(0.1, 2.8, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 1.2;
+        box.position.y = 9.4;
+        box.position.z = 1.3;
+        group.add(box);
+
+        geometry = new THREE.BoxGeometry(1.5, 0.1, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 1.2;
+        box.position.y = 9.8;
+        box.position.z = 1.3;
+        group.add(box);
+
+        geometry = new THREE.BoxGeometry(1.5, 0.1, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 1.2;
+        box.position.y = 9.2;
+        box.position.z = 1.3;
+        group.add(box);
+
+        geometry = new THREE.BoxGeometry(1.5, 0.1, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 1.2;
+        box.position.y = 8.6;
+        box.position.z = 1.3;
+        group.add(box);
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 11;
+        group.position.y = -4.8;
+        group.position.z = -1.6;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = -11;
+        group.position.y = -5;
+        group.position.z = -1.7;
+        group.rotation.y = -0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 6;
+        group.position.y = -1.3;
+        group.position.z = -3.8;
+        group.rotation.y = 0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = -6;
+        group.position.y = -1.3;
+        group.position.z = -4;
+        group.rotation.y = -0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = -8.8;
+        group.position.y = -5;
+        group.position.z = -2.4;
+        group.rotation.y = 3.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = -4;
+        group.position.y = -2;
+        group.position.z = -5.7;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 7.6;
+        group.position.y = -2;
+        group.position.z = -5.7;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 12.8;
+        group.position.y = -4.5;
+        group.position.z = -2.4;
+    
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 2.2;
+        group.position.y = 0.2;
+        group.position.z = -1.4;
+
+        // Вратата долу
+        var light = new THREE.PointLight(0xE66C2C);
+	    group.add( light );
+
+        geometry = new THREE.PlaneGeometry( 2.5, 3 );
+        material = new THREE.MeshBasicMaterial( {color: 0xE66C2C, side: THREE.DoubleSide} );
+        windoww = new THREE.Mesh( geometry, material );
+        windoww.position.x = 1.1;
+        windoww.position.y = 1.7;
+        windoww.position.z = 2.35;
+        scene.add(windoww);
+
+        geometry = new THREE.CircleGeometry( 1.24, 32, 0, Math.PI ); 
+        material = new THREE.MeshBasicMaterial( { color: 0xE66C2C } );  
+        circle = new THREE.Mesh( geometry, material ); 
+        circle.position.x = 1.1;
+        circle.position.y = 3.25;
+        circle.position.z = 2.35;
+        scene.add(circle);
+
+        geometry = new THREE.BoxGeometry(2.5, 0.2, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 1.1;
+        box.position.y = 3.25;
+        box.position.z = 2.35;
+        scene.add(box);
+
+        geometry = new THREE.BoxGeometry(0.2, 4.37, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 1.15;
+        box.position.y = 2.3;
+        box.position.z = 2.35;
+        scene.add(box);
+
+        geometry = new THREE.BoxGeometry(0.2, 1.2, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 0.6;
+        box.position.y = 3.7;
+        box.position.z = 2.35;
+        box.rotation.z = 0.8;
+        scene.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 1.6;
+        box.position.y = 3.7;
+        box.position.z = 2.35;
+        box.rotation.z = -0.8;
+        scene.add(box);
+
+        // Вратите горе
+        group = new THREE.Group();
+        scene.add(group);
+
+        var light = new THREE.PointLight(0xE66C2C);
+	    group.add( light );
+
+        geometry = new THREE.PlaneGeometry( 1.5, 3 );
+        material = new THREE.MeshBasicMaterial( {color: 0xE66C2C, side: THREE.DoubleSide} );
+        windoww = new THREE.Mesh( geometry, material );
+        windoww.position.x = 4.5;
+        windoww.position.y = 6;
+        windoww.position.z = 0.7;
+        group.add(windoww);
+
+        geometry = new THREE.CircleGeometry( 0.8, 32, 0, Math.PI ); 
+        material = new THREE.MeshBasicMaterial( { color: 0xE66C2C } );  
+        circle = new THREE.Mesh( geometry, material ); 
+        circle.position.x = 4.5;
+        circle.position.y = 7.6;
+        circle.position.z = 0.8;
+        group.add(circle);
+
+        geometry = new THREE.BoxGeometry(1.6, 0.2, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 4.5;
+        box.position.y = 7.6;
+        box.position.z = 0.8;
+        group.add(box);
+
+        geometry = new THREE.BoxGeometry(0.2, 3.8, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 4.5;
+        box.position.y = 6.5;
+        box.position.z = 0.8;
+        group.add(box);
+
+        geometry = new THREE.BoxGeometry(0.2, 0.8, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 4.2;
+        box.position.y = 7.9;
+        box.position.z = 0.8;
+        box.rotation.z = 0.8;
+        group.add(box);
+
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = 4.8;
+        box.position.y = 7.9;
+        box.position.z = 0.8;
+        box.rotation.z = -0.8;
+        group.add(box);
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = -6.5;
+        group.position.y = 0.5;
+        group.position.z = -0.7;
+        group.rotation.x = 0.1;
+
+        // Големи прозорци
+        group = new THREE.Group();
+        scene.add(group);
+
+        var light = new THREE.PointLight(0xE66C2C);
+	    group.add( light );
+
+        geometry = new THREE.PlaneGeometry( 2.5, 3 );
+        material = new THREE.MeshBasicMaterial( {color: 0xE66C2C, side: THREE.DoubleSide} );
+        windoww = new THREE.Mesh( geometry, material );
+        windoww.position.x = -6.8;
+        windoww.position.y = 1.7;
+        windoww.position.z = 0.5;
+        windoww.rotation.y = -0.2;
+        group.add(windoww);
+
+        geometry = new THREE.CircleGeometry( 1.24, 32, 0, Math.PI ); 
+        material = new THREE.MeshBasicMaterial( { color: 0xE66C2C } );  
+        circle = new THREE.Mesh( geometry, material ); 
+        circle.position.x = -6.8;
+        circle.position.y = 3.2;
+        circle.position.z = 0.5;
+        circle.rotation.y = -0.2;
+        group.add(circle);
+
+        geometry = new THREE.BoxGeometry(2.5, 0.2, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -6.8;
+        box.position.y = 3.25;
+        box.position.z = 0.55;
+        box.rotation.y = -0.2;
+        group.add(box);
+
+        geometry = new THREE.BoxGeometry(0.2, 4.3, 0.01);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -6.8;
+        box.position.y = 2.35;
+        box.position.z = 0.55;
+        box.rotation.y = -0.2;
+        group.add(box);
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 15;
+        group.position.z = -1.75;
+        group.rotation.y = 0.35;
+
+        // Луната
+        geometry = new THREE.SphereGeometry( 1, 32, 16 ); 
+        material = new THREE.MeshBasicMaterial( { color: 0xE66C2C } ); 
+        sphere = new THREE.Mesh( geometry, material ); 
+        sphere.position.x = 10;
+        sphere.position.y = 20;
+        scene.add( sphere );
+
+        var light = new THREE.PointLight(0xE66C2C);
+	    sphere.add( light );
+
+        // Тикви
+        group = new THREE.Group();
+        scene.add(group);
+        
+        geometry = new THREE.TorusGeometry( 0.3, 1.3, 16, 18 ); 
+        material = new THREE.MeshBasicMaterial( { color: 0xEB5406 } ); 
+        torus = new THREE.Mesh( geometry, material ); 
+        torus.position.x = -12;
+        torus.position.y = 1.5;
+        torus.position.z = 10;
+        torus.rotation.y = 1;
+        group.add( torus );
+
+        geometry = new THREE.BoxGeometry(0.3, 0.5, 0.3);
+        material = new THREE.MeshPhongMaterial({color : 0x704214});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -12;
+        box.position.y = 3;
+        box.position.z = 10.5;
+        group.add(box);
+
+        geometry = new THREE.TetrahedronGeometry(0.5, 0);
+        material = new THREE.MeshBasicMaterial( { color: 'black' } ); 
+        eye = new THREE.Mesh( geometry, material ); 
+        eye.position.x = -12.5;
+        eye.position.y = 2.2;
+        eye.position.z = 11.2;
+        eye.rotation.z = -0.5;
+        group.add(eye);
+
+        eye = new THREE.Mesh( geometry, material ); 
+        eye.position.x = -11.5;
+        eye.position.y = 2.2;
+        eye.position.z = 11.1;
+        eye.rotation.z = -1.2;
+        group.add(eye);
+
+        geometry = new THREE.TetrahedronGeometry(0.3, 0);
+        material = new THREE.MeshBasicMaterial( { color: 'black' } ); 
+        eye = new THREE.Mesh( geometry, material ); 
+        eye.position.x = -12;
+        eye.position.y = 1.7;
+        eye.position.z = 11.5;
+        eye.rotation.z = -0.5;
+        group.add(eye);
+        
+        geometry = new THREE.TorusGeometry( 0.1, 1, 16, 18 ); 
+        material = new THREE.MeshBasicMaterial( { color: 0xEB5406 } ); 
+        torus = new THREE.Mesh( geometry, material ); 
+        torus.position.x = -9.5;
+        torus.position.y = 1;
+        torus.position.z = 9;
+        group.add( torus );
+
+        geometry = new THREE.BoxGeometry(0.2, 0.5, 0.2);
+        material = new THREE.MeshPhongMaterial({color : 0x704214});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -9.4;
+        box.position.y = 2.2;
+        box.position.z = 9;
+        box.rotation.z = -0.2;
+        group.add(box);
+
+        geometry = new THREE.TorusGeometry( 0.01, 1, 16, 18 ); 
+        material = new THREE.MeshBasicMaterial( { color: 0xEB5406 } ); 
+        torus = new THREE.Mesh( geometry, material ); 
+        torus.position.x = -9.8;
+        torus.position.y = 1;
+        torus.position.z = 11;
+        group.add( torus );
+
+        geometry = new THREE.BoxGeometry(0.2, 0.5, 0.2);
+        material = new THREE.MeshPhongMaterial({color : 0x704214});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -9.8;
+        box.position.y = 2;
+        box.position.z = 11;
+        box.rotation.x = -0.6;
+        group.add(box);
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 25;
+        group.position.z = 20;
+        group.rotation.y = -1.6;
+
+        // Гробище
+        group = new THREE.Group();
+        scene.add(group);
+
+        geometry = new THREE.BoxGeometry(2, 0.5, 4);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -12;
+        box.position.y = 0.4;
+        box.position.z = -11;
+        group.add(box);
+
+        geometry = new THREE.BoxGeometry(2, 3, 0.5);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -12;
+        box.position.y = 1.5;
+        box.position.z = -13;
+        group.add(box);
+
+        geometry = new THREE.BoxGeometry(0.2, 2.5, 0.2);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -12;
+        box.position.y = 4;
+        box.position.z = -13;
+        group.add(box);
+
+        geometry = new THREE.BoxGeometry(1.5, 0.2, 0.2);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -12;
+        box.position.y = 4.5;
+        box.position.z = -13;
+        group.add(box);
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = -4;
+        group.position.y = 0.1;
+        group.position.z = 0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 4;
+        group.position.y = 0.1;
+        group.position.z = 0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 8;
+        group.position.y = 0.1;
+        group.position.z = 0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 12;
+        group.position.y = 0.1;
+        group.position.z = 0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 16;
+        group.position.y = 0.1;
+        group.position.z = 0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 20;
+        group.position.y = 0.1;
+        group.position.z = 0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 24;
+        group.position.y = 0.1;
+        group.position.z = 0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 28;
+        group.position.y = 0.1;
+        group.position.z = 0.1;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 32;
+        group.position.y = 0.1;
+        group.position.z = 0.1;
+
+        // Кръстовете отпред
+        group = new THREE.Group();
+        scene.add(group);
+
+        geometry = new THREE.BoxGeometry(0.8, 7, 0.2);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -14;
+        box.position.y = 3.5;
+        box.position.z = 8;
+        box.rotation.y = 0.4;
+        box.rotation.x = -0.2;
+        group.add(box);
+
+        geometry = new THREE.BoxGeometry(3, 0.8, 0.2);
+        material = new THREE.MeshPhongMaterial({color : 'black'});
+        box = new THREE.Mesh(geometry, material);
+        box.position.x = -13.9;
+        box.position.y = 5;
+        box.position.z = 8;
+        box.rotation.y = 0.4;
+        box.rotation.x = -0.2;
+        group.add(box);
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 32;
+        group.position.z = 14;
+        group.rotation.y = -1;
+        
+        // Свещите  
+        group = new THREE.Group();
+        scene.add(group);
+
+        geometry = new THREE.CylinderGeometry(0.2, 0.2, 2, 32);
+        material = new THREE.MeshPhongMaterial({color : 0xEDC9AF});
+        candle = new THREE.Mesh(geometry, material);
+        candle.position.x = -5;
+        candle.position.y = 1;
+        candle.position.z = 4; 
+        group.add(candle);
+
+        geometry = new THREE.CylinderGeometry(0.2, 0.2, 3, 32);
+        material = new THREE.MeshPhongMaterial({color : 0xEDC9AF});
+        candle = new THREE.Mesh(geometry, material);
+        candle.position.x = -4.5;
+        candle.position.y = 1.5;
+        candle.position.z = 3.8;
+        group.add(candle);
+
+        geometry = new THREE.CylinderGeometry(0.2, 0.2, 1.2, 32);
+        material = new THREE.MeshPhongMaterial({color : 0xEDC9AF});
+        candle = new THREE.Mesh(geometry, material);
+        candle.position.x = -4.5;
+        candle.position.y = 0.6;
+        candle.position.z = 4.3;
+        group.add(candle);
+
+        geometry = new THREE.BoxGeometry(0.05, 0.5, 0.05);
+        material = new THREE.MeshPhongMaterial({color : 0xEDC9AF});
+        candle = new THREE.Mesh(geometry, material);
+        candle.position.x = -5;
+        candle.position.y = 2;
+        candle.position.z = 4; 
+        group.add(candle);
+
+        candle = new THREE.Mesh(geometry, material);
+        candle.position.x = -4.5;
+        candle.position.y = 1.5;
+        candle.position.z = 4.3;
+        group.add(candle);
+
+        candle = new THREE.Mesh(geometry, material);
+        candle.position.x = -4.5;
+        candle.position.y = 3;
+        candle.position.z = 3.7;
+        group.add(candle);        
+
+        geometry = new THREE.CylinderGeometry(0.2, 0.01, 0.7, 32);
+        material = new THREE.MeshPhongMaterial({color : 0xE66C2C});
+        candle = new THREE.Mesh(geometry, material);
+        candle.position.x = -4.5;
+        candle.position.y = 3.5;
+        candle.position.z = 3.8;
+        candle.rotation.x = 3.1;
+        group.add(candle);
+
+        candle = new THREE.Mesh(geometry, material);
+        candle.position.x = -5;
+        candle.position.y = 2.5;
+        candle.position.z = 4;
+        candle.rotation.x = 3.1;
+        group.add(candle);
+
+        candle = new THREE.Mesh(geometry, material);
+        candle.position.x = -4.5;
+        candle.position.y = 1.8;
+        candle.position.z = 4.2;
+        candle.rotation.x = 3.1;
+        group.add(candle);
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 11;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 18;
+        group.position.z = -4;
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = -7;
+        group.position.z = -4;
+
+        // Пътечка
+        geometry = new THREE.CylinderGeometry(1.25, 1.25, 0.2, 32);
+        material = new THREE.MeshPhongMaterial({color : 0xAB784E});
+        route = new THREE.Mesh(geometry, material);
+        route.position.x = 2.55;
+        route.position.y = 0.07;
+        route.position.z = 9.25;
+        scene.add(route);
+
+        geometry = new THREE.BoxGeometry(2.5, 0.2, 8);
+        material = new THREE.MeshPhongMaterial({color : 0xAB784E});
+        route = new THREE.Mesh(geometry, material);
+        route.position.x = 1.65;
+        route.position.y = 0.07;
+        route.position.z = 5; 
+        route.rotation.y = 0.2; 
+        scene.add(route);
+
+        geometry = new THREE.BoxGeometry(2.5, 0.05, 6.2);
+        material = new THREE.MeshPhongMaterial({color : 0xAB784E});
+        route = new THREE.Mesh(geometry, material);
+        route.position.x = 0.8;
+        route.position.y = 0.15;
+        route.position.z = 11.8; 
+        route.rotation.y = -0.6; 
+        scene.add(route);
+
+        geometry = new THREE.BoxGeometry(2.15, 0.01, 1.2);
+        material = new THREE.MeshPhongMaterial({color : 0xAB784E});
+        route = new THREE.Mesh(geometry, material);
+        route.position.x = -0.95;
+        route.position.y = 0.17;
+        route.position.z = 14.4; 
+        route.rotation.y = -0.1; 
+        scene.add(route);
+
+        geometry = new THREE.CylinderGeometry(0.9, 0.5, 0.05, 3);
+        material = new THREE.MeshPhongMaterial({color : 0xAB784E});
+        route = new THREE.Mesh(geometry, material);
+        route.position.x = -2;
+        route.position.y = 0.16;
+        route.position.z = 14.5;
+        route.rotation.y = 1;
+        scene.add(route);
+
+        // Сандък и пари
+        group = new THREE.Group();
+        scene.add(group);
+
+        geometry = new THREE.BoxGeometry(1.5, 0.5, 1);
+        material = new THREE.MeshPhongMaterial({color : 0x5C3317});
+        chest = new THREE.Mesh(geometry, material);
+        chest.position.x = -2;
+        chest.position.y = 0.3;
+        chest.position.z = 2.5; 
+        group.add(chest);
+
+        geometry = new THREE.CylinderGeometry(0.5, 0.5, 1.48, 16);
+        material = new THREE.MeshPhongMaterial({color : 0x5C3317});
+        chest = new THREE.Mesh(geometry, material);
+        chest.position.x = -2;
+        chest.position.y = 0.6;
+        chest.position.z = 2.5; 
+        chest.rotation.z = 1.55; 
+        group.add(chest);
+
+        geometry = new THREE.CylinderGeometry(0.1, 0.1, 0.1, 16);
+        material = new THREE.MeshPhongMaterial({color : 'yellow'});
+        money = new THREE.Mesh(geometry, material);
+        money.position.x = -3;
+        money.position.y = 0.3;
+        money.position.z = 3.5; 
+        group.add(money);
+
+        money = new THREE.Mesh(geometry, material);
+        money.position.x = -2.95;
+        money.position.y = 0.45;
+        money.position.z = 3.5; 
+        group.add(money);
+
+        money = new THREE.Mesh(geometry, material);
+        money.position.x = -3.02;
+        money.position.y = 0.6;
+        money.position.z = 3.5; 
+        group.add(money);
+
+        money = new THREE.Mesh(geometry, material);
+        money.position.x = -2.5;
+        money.position.y = 0.3;
+        money.position.z = 3.5; 
+        group.add(money);
+
+        money = new THREE.Mesh(geometry, material);
+        money.position.x = -2.7;
+        money.position.y = 0.3;
+        money.position.z = 3.9; 
+        group.add(money);
+
+        money = new THREE.Mesh(geometry, material);
+        money.position.x = -1;
+        money.position.y = 0.3;
+        money.position.z = 3; 
+        group.add(money);
+
+        money = new THREE.Mesh(geometry, material);
+        money.position.x = -1.3;
+        money.position.y = 0.3;
+        money.position.z = 3.5; 
+        group.add(money);
+
+        group = group.clone();
+        scene.add(group);
+        group.position.x = -13;
+        group.position.z = 7;  
+        
+        group = group.clone();
+        scene.add(group);
+        group.position.x = 18;
+        group.position.z = 11;  
+        group.rotation.y = -0.5;  
+
+        var light = new THREE.PointLight();
+        light.position.set( 50, 50, 100 );
+        scene.add(light);
+
+        function drawFrame(){
+
+            scene.rotation.y += 0.005;
+            renderer.render(scene, camera);
+        }
+        
+        </script><canvas width="643" height="644" style="display: block; width: 643px; height: 644px;"></canvas><canvas width="1358" height="654" style="display: block; width: 1358px; height: 654px;"></canvas><canvas width="1358" height="654" style="display: block; width: 1358px; height: 654px;"></canvas><canvas width="673" height="644" style="display: block; width: 673px; height: 644px;"></canvas>
+</body></html>

@@ -1,0 +1,352 @@
+<html>
+	<head>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="three.min.js"></script>
+		<script>
+			
+			var renderer = new THREE.WebGLRenderer( {antialias: true} );
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+			
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 0xFFF380 );
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 10, 7, 20 );
+			camera.lookAt( new THREE.Vector3() );
+
+			var group = new THREE.Group();
+			scene.add( group );
+
+            // Пирон
+
+            // Средна част
+            var geometry = new THREE.CylinderGeometry(1, 0.2, 0.5, 32);
+            var material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			var cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 140, specular: 'white'}) );
+            cylinder.position.x = 0.08;
+            cylinder.position.y = 0.25;
+            cylinder.position.z = -0.2;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = -4.5;
+            group.add( cylinder );
+
+            // Предни части
+            geometry = new THREE.CylinderGeometry(1, 0.8, 0.2, 32, 3, false, 3.15, 3.14);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+            cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 140, specular: 'white'}) );
+            cylinder.position.x = -0.1;
+            cylinder.position.y = 0.25;
+            cylinder.position.z = 0.1;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(1, 0.8, 0.2, 32, 3, false, 0, 3.14);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 140, specular: 'white'}) );
+            cylinder.position.x = -0.1;
+            cylinder.position.y = 0.15;
+            cylinder.position.z = 0.1;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.95;
+            group.add( cylinder );
+
+            // Задни части
+            geometry = new THREE.CylinderGeometry(0.4, 0.4, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.2;
+            cylinder.position.y = 0.2;
+            cylinder.position.z = -0.35;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.43, 0.43, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.23;
+            cylinder.position.y = 0.22;
+            cylinder.position.z = -0.45;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.38, 0.38, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.3;
+            cylinder.position.y = 0.24;
+            cylinder.position.z = -0.55;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.41, 0.41, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.35;
+            cylinder.position.y = 0.26;
+            cylinder.position.z = -0.65;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.36, 0.36, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.4;
+            cylinder.position.y = 0.28;
+            cylinder.position.z = -0.75;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.39, 0.39, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.45;
+            cylinder.position.y = 0.3;
+            cylinder.position.z = -0.85;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.34, 0.34, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.5;
+            cylinder.position.y = 0.32;
+            cylinder.position.z = -0.95;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.37, 0.37, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.55;
+            cylinder.position.y = 0.34;
+            cylinder.position.z = -1.05;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.32, 0.32, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.6;
+            cylinder.position.y = 0.36;
+            cylinder.position.z = -1.15;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.35, 0.35, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.65;
+            cylinder.position.y = 0.38;
+            cylinder.position.z = -1.25;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.3, 0.3, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.7;
+            cylinder.position.y = 0.4;
+            cylinder.position.z = -1.35;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.33, 0.33, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.75;
+            cylinder.position.y = 0.42;
+            cylinder.position.z = -1.45;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.28, 0.28, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.8;
+            cylinder.position.y = 0.44;
+            cylinder.position.z = -1.55;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.31, 0.31, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.85;
+            cylinder.position.y = 0.46;
+            cylinder.position.z = -1.65;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.26, 0.26, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.9;
+            cylinder.position.y = 0.48;
+            cylinder.position.z = -1.75;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.29, 0.29, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 0.95;
+            cylinder.position.y = 0.5;
+            cylinder.position.z = -1.85;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.24, 0.24, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 1;
+            cylinder.position.y = 0.52;
+            cylinder.position.z = -1.95;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.27, 0.27, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 1.05;
+            cylinder.position.y = 0.54;
+            cylinder.position.z = -2.05;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.22, 0.22, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 1.1;
+            cylinder.position.y = 0.56;
+            cylinder.position.z = -2.15;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.25, 0.25, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 1.15;
+            cylinder.position.y = 0.58;
+            cylinder.position.z = -2.25;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.2, 0.2, 0.2, 32);
+            material = new THREE.MeshBasicMaterial( {color: 0xBCC6CC} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 1.2;
+            cylinder.position.y = 0.6;
+            cylinder.position.z = -2.35;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.23, 0.23, 0.05, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 1.25;
+            cylinder.position.y = 0.62;
+            cylinder.position.z = -2.45;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+            geometry = new THREE.CylinderGeometry(0.01, 0.2, 0.3, 32);
+            material = new THREE.MeshBasicMaterial( {color: '0xC0C0C0'} ); 
+			cylinder = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({shininess: 200, specular: 'white'}) );
+            cylinder.position.x = 1.35;
+            cylinder.position.y = 0.64;
+            cylinder.position.z = -2.6;
+            cylinder.rotation.y = 1;
+            cylinder.rotation.z = 4.9;
+            group.add( cylinder );
+
+			var light = new THREE.PointLight( 'grey', 0.5 );
+			light.position.set( 10, 10, 25);
+			scene.add( light );
+
+            var light = new THREE.PointLight( 'grey', 0.5 );
+			light.position.set( 1, 10, 25);
+			scene.add( light );
+
+            var light = new THREE.PointLight( 'grey', 0.5 );
+			light.position.set( 10, 5, 2);
+			scene.add( light );
+
+            group.position.x = 5;
+
+            // Бомбе
+            
+            var group = new THREE.Group();
+			scene.add( group );
+
+            var profile = [];
+			for ( var i = 20; i < 350; i += 10 )
+			{
+				var t = Math.PI*i/180;
+				var x = t;
+				var y = Math.sin(t);
+				profile.push( new THREE.Vector2( x + y, 1.5 * y ) );
+			}
+
+			geometry = new THREE.LatheGeometry( profile, 50 );
+            bombe = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial( {color: 0xD58A94, side: THREE.DoubleSide} ) );
+            group.add( bombe );
+
+            geometry = new THREE.CircleGeometry( 1.5, 32, 6.28, 6.28 ); 
+            circle = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial( {color: 0xD58A94, side: THREE.DoubleSide} ) );
+            circle.rotation.x = -1.5;
+            circle.position.x = 0;
+            circle.position.y = 0.4;
+            group.add( circle );
+
+            geometry = new THREE.TorusGeometry(3.2, 0.2, 16, 100);
+            material = new THREE.MeshBasicMaterial( { color: 'black' } ); 
+            torus = new THREE.Mesh( geometry, material ); 
+            torus.position.x = 0;
+            torus.position.y = -1;
+            torus.rotation.x = -1.6;
+            group.add( torus );
+
+            group.position.x = -4;
+            group.position.y = -1;
+
+			function drawFrame()
+			{
+				//scene.rotation.x += 0.01;
+			    //scene.rotation.y += 0.01;
+                //scene.rotation.z += 0.01;
+				renderer.render( scene, camera );
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			h1 {color:white; text-align:center;}
+			canvas {width:100%; height:100%; position:fixed; top:0; left:0; z-index:-1;}
+		</style>
+		<script src="three.min.js"></script>
+		<script src="kanji.js"></script>
+	</head>
+	
+	<body>
+		<h1>ф.н. 0MI0800317 &ndash; група 2 &ndash; Салина Чинарска </h1>
+
+		<script>
+			var material = new THREE.MeshPhongMaterial( {color: 'SkyBlue'} );
+			var extrude = { depth: 6, bevelEnabled: false, curveSegments: 60 };
+
+			class Shape3D extends THREE.Mesh
+			{
+				constructor( shape )
+				{
+					super( new THREE.ExtrudeGeometry( shape, extrude ), material );
+					this.position.z = -3;
+					this.scale.set(2, -2, 1);
+				}
+			}
+
+			// Part 1
+
+			var shape1 = new THREE.Shape();
+				shape1.moveTo( -3.8, -4.25); 				
+				shape1.lineTo( 3.85, -4.25);
+				shape1.lineTo(3.85, -3.6);
+				shape1.lineTo(-2.9, -3.6);
+				shape1.lineTo(-2.9, -3.1);
+				shape1.lineTo(-3, -3);
+				shape1.lineTo(-3.8, -3.8);
+				part1.add( new Shape3D(shape1) );
+				
+			var shape2 = new THREE.Shape();
+				shape2.moveTo( -2.9, -3.1); 				
+				shape2.lineTo( 3.85, -3.1);
+				shape2.lineTo(3.85, -2.49);
+				shape2.lineTo(-2.48, -2.49);
+				shape2.lineTo(-3.8, -3.8);
+				shape2.lineTo(-3.8, -4.25);
+				part1.add( new Shape3D(shape2) );
+
+			var shape3 = new THREE.Shape();
+				shape3.moveTo( 3, -3.6); 				
+				shape3.lineTo( 3.85, -3.6);
+				shape3.lineTo(3.85, -3.1);
+				shape3.lineTo(3, -3.1);
+				part1.add( new Shape3D(shape3) );
+
+			var shape4 = new THREE.Shape();
+				shape4.moveTo( -1.3, -2.4); 	
+				shape4.quadraticCurveTo(-1.3, -2.3, -1.8, -1.8 );			
+				shape4.lineTo( -1.25, -1.25);
+				shape4.quadraticCurveTo(-0.8, -1.7, -0.7, -1.95 );
+				part1.add( new Shape3D(shape4) );
+
+			var shape5 = new THREE.Shape();
+				shape5.moveTo( 1, -1.99); 	
+				shape5.lineTo( 4.25, -1.99);
+				shape5.lineTo( 4.25, -1.3);
+				shape5.lineTo( 0.4, -1.3);
+				shape5.lineTo( 0.1, -0.99);
+				part1.add( new Shape3D(shape5) );
+				
+			var shape6 = new THREE.Shape();
+				shape6.moveTo( 0.1, -0.99); 	
+				shape6.lineTo( 3.85, -0.99);
+				shape6.lineTo( 3.8, -0.5);
+				shape6.lineTo( 0.5, -0.5);
+				part1.add( new Shape3D(shape6) );
+			
+			var shape7 = new THREE.Shape();
+				shape7.moveTo( 3.85, -0.99);
+				shape7.lineTo(3.85, -0.1);
+				shape7.lineTo(3, -0.1);
+				shape7.lineTo(3, -0.5);
+				part1.add( new Shape3D(shape7) );
+
+			var shape8 = new THREE.Shape();
+				shape8.moveTo( 3, -0.1);
+				shape8.lineTo(0.6, -0.1);
+				shape8.lineTo(0.6, 0.4);
+				shape8.lineTo(3.85, 0.4);
+				shape8.lineTo(3.85, -0.1);
+				part1.add( new Shape3D(shape8) );
+
+			var shape9 = new THREE.Shape();
+				shape9.moveTo( 0.35, -2.4 );
+				shape9.quadraticCurveTo( 0.35, -2.2, -1, -1 );
+				shape9.lineTo( -0.5, -0.5 );
+				shape9.quadraticCurveTo(  1.05, -1.5, 1.05, -2.2 );
+			part1.add( new Shape3D(shape9) );
+
+			var shape10 = new THREE.Shape();
+				shape10.moveTo( -0.25, -0.25 );
+				shape10.lineTo( -0.25, -0.75 );
+				shape10.lineTo( -0.15, -0.75 );
+			part1.add( new Shape3D(shape10) );
+
+			var shape11 = new THREE.Shape();
+				shape11.moveTo( 0.6, -0.1);
+				shape11.lineTo( 0.6, -0.5);
+				shape11.lineTo( 0, 0);
+				part1.add( new Shape3D(shape11) );
+
+			var shape12 = new THREE.Shape();
+				shape12.moveTo( 3.85, -0.1 );
+				shape12.lineTo( 3.85, 1.25 );
+				shape12.lineTo( 1.6, 1.25 );
+				shape12.lineTo( 1.5, 1.5);
+				shape12.lineTo( 0.75, 0.75);
+				shape12.lineTo( 3, 0.75);
+			    shape12.lineTo( 3, 0.4);
+				shape12.lineTo( 0.6, 0.4);
+				shape12.lineTo( 0.6, 0.5);
+				shape12.lineTo( 0, 0);
+				shape12.lineTo( 0.6, -0.1);
+			part1.add( new Shape3D(shape12) );
+
+			var shape13 = new THREE.Shape();
+				shape13.moveTo(0.6, -0.1);
+				shape13.lineTo(0.6, -0.99);
+				shape13.lineTo(0, -0.99);
+				shape13.lineTo(-0.25, -0.6);
+				shape13.lineTo(-0.25, -0.25);
+				shape13.lineTo(0, 0);
+				shape13.lineTo(0, 0);
+				part1.add( new Shape3D(shape13) );
+
+			var shape14 = new THREE.Shape();
+				shape14.moveTo(1.65, 1.65);
+				shape14.lineTo(3.9, 1.65);
+				shape14.lineTo(3.9, 2.25);
+				shape14.quadraticCurveTo( 3.9, 2.4, 3, 3 );
+				shape14.lineTo(2.5, 2.5);
+				shape14.lineTo(2.8, 2.25);
+				shape14.lineTo(2.25, 2.25);
+				part1.add( new Shape3D(shape14) );
+
+			var shape15 = new THREE.Shape();
+				shape15.moveTo(3.5, 3.5);
+				shape15.quadraticCurveTo( 3.5, 3.5, 4.4, 3.75);
+				shape15.lineTo(4.2, 4.2);
+				part1.add( new Shape3D(shape15) );
+
+				// Part 2
+
+			var shape16 = new THREE.Shape();
+				shape16.moveTo(-3.8, -3.8);
+				shape16.lineTo(-3.8, 0.5);
+				shape16.lineTo(-2.9, 0.5);
+				shape16.lineTo(-2.9, -2.49);
+				shape16.lineTo(-2.48, -2.49);
+				part2.add( new Shape3D(shape16) );
+
+			var shape17 = new THREE.Shape();
+				shape17.moveTo(-3.8, 0.4);
+				shape17.quadraticCurveTo( -3.8, 3.5, -4.48, 3.9);
+				shape17.lineTo(-3.7, 4.4);
+				shape17.quadraticCurveTo( -3, 3.8, -2.9, 0.5);
+				part2.add( new Shape3D(shape17) );
+
+			var shape18 = new THREE.Shape();
+				shape18.moveTo(-1.8, -1.8);
+				shape18.quadraticCurveTo( -2.2, -1.4, -2.8, -1.1);
+				shape18.lineTo(-2.5, -0.4);
+				shape18.quadraticCurveTo( -1.5, -1, -1.25, -1.25);
+				part2.add( new Shape3D(shape18) );
+
+			var shape19 = new THREE.Shape();
+				shape19.moveTo(-1, -1);
+				shape19.lineTo(-1.1, -0.9);
+				shape19.lineTo(-0.6, -0.4);
+				shape19.lineTo(-0.5, -0.5);
+				part2.add( new Shape3D(shape19) );
+
+			var shape20 = new THREE.Shape();
+				shape20.moveTo(-1.4, -0.6);
+				shape20.quadraticCurveTo( -1.8, 0.1, -2.8, 0.9);
+				shape20.lineTo(-2.6, 1.6);
+				shape20.quadraticCurveTo( -1.8, 1.2, -0.8, -0.1);
+				part2.add( new Shape3D(shape20) );
+
+			var shape21 = new THREE.Shape();
+				shape21.moveTo(-2.2, 1.35);
+				shape21.lineTo(-2.2, 4.35);
+				shape21.lineTo(-1.4, 4.35);
+				shape21.lineTo(-1.4, 0.6);
+				part2.add( new Shape3D(shape21) );
+
+			var shape22 = new THREE.Shape();
+				shape22.moveTo(-0.25, -0.25);
+				shape22.lineTo(-0.25, 1.25);
+				shape22.lineTo(1.25, 1.25);
+				shape22.lineTo(0.75, 0.75);
+				shape22.lineTo(0.6, 0.75);
+				shape22.lineTo(0.6, 0.5);
+				part2.add( new Shape3D(shape22) );
+
+			var shape23 = new THREE.Shape();
+				shape23.moveTo(0.8, 1.25);
+				shape23.quadraticCurveTo( 1, 1.5, -1.1, 2.6);
+				shape23.lineTo(-0.75, 3.2);
+				shape23.quadraticCurveTo( 1, 2.2, 1.5, 1.5);
+				shape23.lineTo(0.75, 0.75);
+				part2.add( new Shape3D(shape23) );
+
+			var shape24 = new THREE.Shape();
+				shape24.moveTo(0, 1.45);
+				shape24.quadraticCurveTo( 1.5, 3, 3.5, 3.5);
+				shape24.lineTo(4.2, 4.2);
+				shape24.lineTo(4.1, 4.4);
+				shape24.quadraticCurveTo( 0.5, 3.5, -0.55, 1.8);
+				shape24.lineTo(0, 1.45);
+				part2.add( new Shape3D(shape24) );
+
+			var shape25 = new THREE.Shape();
+				shape25.moveTo(2.5, 2.5);
+				shape25.quadraticCurveTo( 1.5, 3.5, -1.1, 3.75);
+				shape25.lineTo(-0.8, 4.4);
+				shape25.quadraticCurveTo( 1.5, 4.2, 3, 3);
+				part2.add( new Shape3D(shape25) );
+
+			var shape26 = new THREE.Shape();
+				shape26.moveTo(0.85, 2.25);
+				shape26.lineTo(2.25, 2.25);
+				shape26.lineTo(1.7, 1.65);
+				shape26.lineTo(0.55, 1.65);
+				part2.add( new Shape3D(shape26) );
+
+		</script>
+	</body>
+</html>

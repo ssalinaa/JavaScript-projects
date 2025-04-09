@@ -1,0 +1,400 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="three.min.js"></script>
+		<script>
+			var renderer = new THREE.WebGLRenderer({antialias:true});
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			renderer.shadowMap.enabled = true;
+			renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 0xE8ADAA );
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 20, 30 );
+			camera.lookAt( new THREE.Vector3( 0, -10, 0 ) );
+
+			var x1 = 3;
+			var y1 = 1;
+			var z1 = 0;
+			
+			var x2 = 0;
+			var y2 = -10;
+			var z2 = 0;
+
+			var x3 = 0;
+			var y3 = 1;
+			var z3 = 0;
+			
+			var x4 = 2.2;
+			var y4 = -10;
+			var z4 = -1;
+
+			var x5 = 2;
+			var y5 = -1;
+			var z5 = -1;
+			
+			var x6 = 0;
+			var y6 = -8;
+			var z6 = 0;
+
+			var x7 = -50 * Math.random();
+			var y7 = -50 * Math.random();
+			var z7 = 50 * Math.random();
+
+			var x8 = 50 * Math.random();
+			var y8 = 50 * Math.random();
+			var z8 = -50 * Math.random();
+
+			var x9 = 50 * Math.random();
+			var y9 = 50 * Math.random();
+			var z9 = 50 * Math.random();
+
+			var ball1 = new THREE.Mesh(
+				new THREE.SphereGeometry( 1, 15, 15 ),
+				new THREE.MeshPhongMaterial( {color: 0xFFFF00, shininess: 100} )
+			);
+			ball1.position.set( x1, y1, z1 ); 
+			ball1.castShadow = true;
+			scene.add( ball1 );
+
+			var ball2 = new THREE.Mesh(
+				new THREE.SphereGeometry( 1, 15, 15 ),
+				new THREE.MeshPhongMaterial( {color: 0x00A36C, shininess: 100} )
+			);
+			ball2.position.set( x3, y3, z3 ); 
+			ball2.castShadow = true;
+			scene.add( ball2 );
+
+			var ball3 = new THREE.Mesh(
+				new THREE.SphereGeometry( 1, 15, 15 ),
+				new THREE.MeshPhongMaterial( {color: 0x7D0552, shininess: 100} )
+			);
+			ball3.position.set( x5, y5, z5 ); 
+			ball3.castShadow = true;
+			scene.add( ball3 );
+			
+			var n = 50; 
+			var v1 = new THREE.Vector3(x2, y2, z2);
+			var vn1 = new THREE.Vector3( v1.x/n, v1.y/n, v1.z/n ); 
+
+			var v2 = new THREE.Vector3(x4, y4, z4);
+			var vn2 = new THREE.Vector3( v1.x/n, v1.y/n, v1.z/n ); 
+			
+			var v3 = new THREE.Vector3(x6, y6, z6);
+			var vn3 = new THREE.Vector3( v3.x/n, v3.y/n, v3.z/n ); 
+
+			var m = 100; 
+			var v4 = new THREE.Vector3(x7, y7, z7);
+			var vn4 = new THREE.Vector3( v4.x/m, v4.y/m, v4.z/m ); 
+
+			var v5 = new THREE.Vector3(x8, y8, z8);
+			var vn5 = new THREE.Vector3( v5.x/m, v5.y/m, v5.z/m ); 
+
+			var v6 = new THREE.Vector3(x9, y9, z9);
+			var vn6 = new THREE.Vector3( v6.x/m, v6.y/m, v6.z/m ); 
+
+			// КУТИЯ 1
+
+			box = new THREE.Mesh( new THREE.BoxGeometry( 2, 2, 2 ), 
+			new THREE.MeshPhongMaterial({ color: 0xE56717, shininess: 100}) );
+			box.position.y = -10;
+			scene.add( box );
+
+			geometry = new THREE.PlaneGeometry( 2, 0.5 );
+			material = new THREE.MeshBasicMaterial( {color: 'black', side: THREE.DoubleSide} );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.z = 0.1;
+			plane.position.y = -9;
+			plane.rotation.x = 1.6;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.z = 0;
+			plane.position.y = -11.05;
+			plane.rotation.x = 1.6;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.y = -8.99;
+			plane.rotation.x = 1.58;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.z = 1.001;
+			plane.position.y = -10;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 0.99;
+			plane.rotation.y = 1.5;
+			plane.position.y = -10;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = -1.02;
+			plane.rotation.y = 1.5;
+			plane.position.y = -10;
+			scene.add( plane );
+
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.z = -1.001;
+			plane.position.y = -10;
+			scene.add( plane );
+		
+			ribbon = new THREE.Mesh( new THREE.TorusGeometry( 0.3, 0.2, 16, 10, 6.28 ), 
+			new THREE.MeshPhongMaterial({ color: 'black', shininess: 100}) );
+			ribbon.position.x = -0.45;
+			ribbon.position.y = -8.85;
+			scene.add( ribbon );
+
+			ribbon = new THREE.Mesh( new THREE.TorusGeometry( 0.3, 0.2, 16, 10, 6.28 ), 
+			new THREE.MeshPhongMaterial({ color: 'black', shininess: 100}) );
+			ribbon.position.x = 0.45;
+			ribbon.position.y = -8.85;
+			scene.add( ribbon );
+
+			// КУТИЯ 2
+
+			box = new THREE.Mesh( new THREE.BoxGeometry( 2, 2, 2 ), 
+			new THREE.MeshPhongMaterial({ color: 0x00CED1, shininess: 100}) );
+			box.position.y = -10;
+			box.position.x = 2.2;
+			box.position.z = -1;
+			scene.add( box );
+
+			geometry = new THREE.PlaneGeometry( 2, 0.5 );
+			material = new THREE.MeshBasicMaterial( {color: 0xE2F516, side: THREE.DoubleSide} );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.y = -8.999;
+			plane.rotation.x = 1.6;
+			plane.position.x = 2.2;
+			plane.position.z = -0.9;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 2.2;
+			plane.position.z = -1;
+			plane.position.y = -11.03;
+			plane.rotation.x = 1.6;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 2.2;
+			plane.position.y = -11.03;
+			plane.position.z = -1;
+			plane.rotation.x = 1.58;
+			plane.rotation.z = 1.6;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 2.2;
+			plane.position.z = -1;
+			plane.position.y = -8.95;
+			plane.rotation.x = 1.6;
+			scene.add( plane );
+			
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 2.2;
+			plane.position.z = -2.01;
+			plane.position.y = -10;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 2.2;
+			plane.position.z = 0.01;
+			plane.position.y = -10;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 3.25;
+			plane.position.z = -1;
+			plane.rotation.y = 1.5;
+			plane.position.y = -10;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 2 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 1.18;
+			plane.position.z = -1;
+			plane.rotation.y = 1.5;
+			plane.position.y = -10;
+			scene.add( plane );
+		
+			ribbon = new THREE.Mesh( new THREE.TorusGeometry( 0.3, 0.2, 16, 10, 6.28 ), 
+			new THREE.MeshPhongMaterial({ color: 'yellow', shininess: 100}) );
+			ribbon.position.x = 2.7;
+			ribbon.position.y = -8.85;
+			ribbon.position.z = -1;
+			scene.add( ribbon );
+
+			ribbon = new THREE.Mesh( new THREE.TorusGeometry( 0.3, 0.2, 16, 10, 6.28 ), 
+			new THREE.MeshPhongMaterial({ color: 'yellow', shininess: 100}) );
+			ribbon.position.x = 1.7;
+			ribbon.position.y = -8.85;
+			ribbon.position.z = -1;
+			scene.add( ribbon );
+
+			// КУТИЯ 3
+
+			box = new THREE.Mesh( new THREE.BoxGeometry( 2, 1.5, 1.5 ), 
+			new THREE.MeshPhongMaterial({ color: 0x810541, shininess: 100}) );
+			box.position.y = -10;
+			box.position.x = 3;
+			box.position.z = 1.2;
+			scene.add( box );
+
+			geometry = new THREE.PlaneGeometry( 2, 0.3 );
+			material = new THREE.MeshBasicMaterial( {color: 0xFFE6E8, side: THREE.DoubleSide} );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.y = -9.23;
+			plane.rotation.x = 1.6;
+			plane.position.x = 3;
+			plane.position.z = 1.2;
+			scene.add( plane );
+
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.y = -10.755;
+			plane.rotation.x = 1.6;
+			plane.position.x = 3;
+			plane.position.z = 1.2;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 1.5 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.y = -9.22;
+			plane.rotation.x = 1.6;
+			plane.position.x = 3;
+			plane.position.z = 1.2;
+			scene.add( plane );
+
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.y = -10.77;
+			plane.rotation.x = 1.6;
+			plane.position.x = 3;
+			plane.position.z = 1.2;
+			scene.add( plane );
+			
+			geometry = new THREE.PlaneGeometry( 0.3, 1.5 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 3;
+			plane.position.z = 1.96;
+			plane.position.y = -10;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 1.5 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 3;
+			plane.position.z = 0.44;
+			plane.position.y = -10;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 1.5 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 4.02;
+			plane.position.z = 1.2;
+			plane.rotation.y = 1.5;
+			plane.position.y = -10;
+			scene.add( plane );
+
+			geometry = new THREE.PlaneGeometry( 0.3, 1.5 );
+			plane = new THREE.Mesh( geometry, material );
+			plane.position.x = 1.97;
+			plane.position.z = 1.2;
+			plane.rotation.y = 1.5;
+			plane.position.y = -10;
+			scene.add( plane );
+		
+			ribbon = new THREE.Mesh( new THREE.TorusGeometry( 0.3, 0.2, 16, 10, 6.28 ), 
+			new THREE.MeshPhongMaterial({ color: 0xFFE6E8, shininess: 100}) );
+			ribbon.position.x = 3.5;
+			ribbon.position.y = -9.2;
+			ribbon.position.z = 1.2;
+			scene.add( ribbon );
+
+			ribbon = new THREE.Mesh( new THREE.TorusGeometry( 0.3, 0.2, 16, 10, 6.28 ), 
+			new THREE.MeshPhongMaterial({ color: 0xFFE6E8, shininess: 100}) );
+			ribbon.position.x = 2.5;
+			ribbon.position.y = -9.2;
+			ribbon.position.z = 1.2;
+			scene.add( ribbon );
+
+			var light = new THREE.PointLight( 'white', 0.5 );
+			light.position.set( 0, 0, 0 );
+			light.castShadow = true;
+			scene.add( light );
+
+			var light = new THREE.PointLight('white', 0.5);
+			light.position.set( 0, 100, 0 );
+			light.castShadow = true;
+			scene.add( light );
+
+			var light = new THREE.PointLight('white', 1);
+			light.position.set( -100, 100, 100 );
+			light.castShadow = true;
+			scene.add( light );
+
+			function drawFrame()
+			{
+				
+				if (n)
+				{
+					ball1.position.x += vn1.x;
+					ball1.position.y += vn1.y;
+					ball1.position.z += vn1.z;
+
+					ball2.position.x += vn2.x;
+					ball2.position.y += vn2.y;
+					ball2.position.z += vn2.z;
+
+					ball3.position.x += vn3.x;
+					ball3.position.y += vn3.y;
+					ball3.position.z += vn3.z;
+					
+					n--;
+				}
+
+				if(m + n <= 100 && m <= 1000)
+				{
+			
+					ball1.position.x += vn4.x;
+					ball1.position.y += vn4.y;
+					ball1.position.z += vn4.z;
+					
+					ball2.position.x += vn5.x;
+					ball2.position.y += vn5.y;
+					ball2.position.z += vn5.z;
+					
+					ball3.position.x += vn6.x;
+					ball3.position.y += vn6.y;
+					ball3.position.z += vn6.z;
+
+				  	m--;
+				}
+					
+				renderer.render( scene, camera );
+			}
+		</script>
+	</body>
+</html>
