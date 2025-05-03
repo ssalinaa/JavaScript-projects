@@ -1,0 +1,88 @@
+body {
+    font-family: Verdana;
+    background-image: url('butterflies.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.todo-container {
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid rgba(16, 7, 20, 0.361);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    width: 500px;
+    height: 250px;
+    overflow-y: hidden;
+}
+
+h1 {
+    text-align: center;
+    color: rgba(129, 67, 160, 0.557);
+    font-size: 30px;
+}
+
+#task-input {
+    width: 71%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-shadow: 0 4px 4px rgb(199, 188, 188);
+    border: 2px solid rgba(16, 7, 20, 0.361);
+}
+
+button {
+    font-family: Verdana;
+    width: 20%;
+    padding: 8px;
+    background-color:  rgba(232, 225, 236, 0.557);;
+    border-radius: 4px;
+    border: 2px solid rgba(16, 7, 20, 0.361);
+    color: rgba(59, 19, 79, 0.637);
+    box-shadow: 0 4px 4px rgb(199, 188, 188);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color:rgba(188, 163, 201, 0.637);
+}
+
+ul {
+    list-style-type: none;
+    padding: 20px;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+li.completed {
+    text-decoration: line-through;
+    color: rgba(59, 19, 79, 0.637);
+}
+
+button.delete-btn {
+    font-family: Verdana;
+    background-color:rgba(188, 163, 201, 0.637);
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 2px solid rgba(16, 7, 20, 0.361);
+    color: rgba(59, 19, 79, 0.637);
+    box-shadow: 0 4px 4px rgb(199, 188, 188);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button.delete-btn:hover {
+    background-color:rgba(188, 163, 201, 0.637);
+} 
