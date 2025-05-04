@@ -1,2 +1,2 @@
 # JavaScript-projects
-Projects that use mainly JavaScript and HTML.  
+Projects that use mainly HTML, CSS and JavaScript.  
