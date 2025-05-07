@@ -1,0 +1,153 @@
+body {
+    background-image: url(numbers.png);
+    background-size: cover;
+}
+
+.buttons {
+    margin-left: 50px;
+    margin-top: 470px;
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.buttons button {
+    font-family: fantasy;
+    font-size: 50px;
+    width: 70px;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 20px;
+    box-shadow: 2px 4px aquamarine;
+    color:white;
+    border: solid rgba(127, 255, 212, 0.642);
+    background-color: rgba(12, 226, 155, 0.737);
+}
+
+.buttons button:hover {
+    transform: scale(1.1);
+    background-color: rgba(26, 205, 145, 0.642);
+}
+
+.main-buttons {
+    margin-left: 270px;
+    margin-top: -200px;
+    text-align: center;
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.main-buttons button {
+    font-family: fantasy;
+    font-size: 60px;
+    width: 200px;
+    height: 70px;
+    border-radius: 10px;
+    padding: 20px;
+    gap: 20px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    color:white;
+    box-shadow: 2px 4px aquamarine;
+    border: solid rgba(127, 255, 212, 0.642);
+    background-color: rgba(12, 226, 155, 0.737);
+}
+
+.main-buttons button:hover {
+    transform: scale(1.1);
+    background-color: rgba(26, 205, 145, 0.642);
+}
+
+.question-mark {
+    width: 200px;
+    height: 200px;
+    background-image: url("questionMark.png");
+    background-size: cover;
+    margin-left: 420px;
+    margin-top: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.lessThan1up {
+    width: 20px;
+    height: 80px;
+    background-size: cover;
+    border-radius: 10px;
+    background-color: rgba(255, 196, 0, 0.879);
+    margin-left: 320px;
+    margin-top: -160px;
+    transform: rotate(40deg);
+}
+
+.lessThan1down {
+    width: 20px;
+    height: 80px;
+    background-size: cover;
+    border-radius: 10px;
+    background-color: rgba(255, 196, 0, 0.879);
+    margin-left: 320px;
+    margin-top: -30px;
+    transform: rotate(140deg);
+}
+
+.lessThan2up {
+    width: 20px;
+    height: 80px;
+    background-size: cover;
+    border-radius: 10px;
+    background-color: rgba(255, 196, 0, 0.879);
+    margin-left: 690px;
+    margin-top: -130px;
+    transform: rotate(40deg);
+}
+
+.lessThan2down {
+    width: 20px;
+    height: 80px;
+    background-size: cover;
+    border-radius: 10px;
+    background-color: rgba(255, 196, 0, 0.879);
+    margin-left: 690px;
+    margin-top: -30px;
+    transform: rotate(140deg);
+}
+
+.number1 {
+    font-family: Arial;
+    color:cadetblue;
+    font-size: 150px;
+    margin-left: 10px;
+    margin-top: -290px;
+    font-weight: bold;
+}
+
+.number999 {
+    font-family: Arial;
+    color:cadetblue;
+    font-size: 150px;
+    margin-left: 760px;
+    margin-top: -180px;
+    font-weight: bold;
+}
+
+.numberTurns {
+    font-family: Arial;
+    color:cadetblue;
+    font-size: 90px;
+    margin-left: 320px;
+    margin-top: -320px;
+    font-weight: bold;
+}
+
+.turns {
+    font-family: Arial;
+    color:cadetblue;
+    font-size: 80px;
+    margin-left: 430px;
+    margin-top: -280px;
+    font-weight: bold;
+}

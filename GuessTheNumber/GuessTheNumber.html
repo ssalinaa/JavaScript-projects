@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <link rel="stylesheet" href="GuessTheNumber.css">
+</head>
+<body>
+    <div id="startScreen" style="
+            text-align: center; 
+            margin-top: 150px;">
+        <div style="
+            font-family: fantasy; 
+            font-size: 150px; 
+            font-weight: bold; 
+            color: rgba(12, 226, 155, 0.737); 
+            margin-top: 100px; 
+            margin-left: -200px;
+            text-align: center;">
+            GUESS NUMBER
+        </div>
+        <button id="startBtn" style="
+                margin-top: 40px; 
+                margin-left: 450px; 
+                padding: 15px 30px; 
+                font-family: fantasy; 
+                font-weight: bold; 
+                font-size: 50px;
+                width: 200px;
+                height: 80px;
+                border-radius: 10px;
+                padding: 20px;
+                display: flex;
+                justify-content: center; 
+                align-items: center; 
+                color:white;
+                box-shadow: 2px 4px aquamarine;
+                border: solid rgba(127, 255, 212, 0.642);
+                background-color: rgba(12, 226, 155, 0.737);">
+            START
+        </button>
+    </div>
+
+    <div class="buttons" style="display: none;">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>0</button>
+    </div>
+    <div class="main-buttons" style="display: none;">
+        <button>Guess</button>
+        <button>Clear</button>
+    </div>
+    <div class="number1" style="display: none;">1</div>
+    <div class="number999" style="display: none;">10</div>
+    <div class="numberTurns" style="display: none;">0</div>
+    <div class="question-mark" style="display: none;"></div>
+    <div class="lessThan1up" style="display: none;"></div>
+    <div class="lessThan1down" style="display: none;"></div>
+    <div class="lessThan2up" style="display: none;"></div>
+    <div class="lessThan2down" style="display: none;"></div>
+    <div class="turns" style="display: none;">TURNS</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
