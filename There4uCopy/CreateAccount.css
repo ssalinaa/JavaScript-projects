@@ -1,0 +1,91 @@
+body {
+    background-image: url(backgroundCreateAccount.jpg);
+    background-size: contain;
+}
+
+.container {
+    background-color: rgba(15, 33, 19, 0.929);
+    width: 590px;
+    height: 600px;
+    margin-top: -427px;
+    margin-left: -10px;
+}
+
+.title {
+    font-family: fantasy;
+    font-size: 60px;
+    font-weight: bold;
+    color:  rgba(163, 174, 165, 0.929);
+    margin-left: 50px; 
+    margin-top: 200px;
+    text-shadow: 10px 10px 6px rgba(0, 0, 0, 0.6);
+}
+
+.checkbox1 {
+    font-style: verdana;
+    font-weight: bold;
+    margin: 20px auto;
+    width: fit-content;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
+    gap: 100px;
+    font-size: 40px;
+    margin-left: 670px; 
+    margin-top: -300px;
+    border-radius: 10px;
+    width: 500px;
+    height: 100px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 4px  rgba(37, 96, 15, 0.626);
+    border: solid rgba(37, 96, 15, 0.543); 
+}
+
+.checkbox2 {
+    font-style: verdana;
+    font-weight: bold;
+    margin: 20px auto;
+    width: fit-content;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
+    font-size: 40px;
+    margin-left: 670px; 
+    margin-top: -250px;
+    border-radius: 10px;
+    width: 500px;
+    height: 100px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 4px  rgba(37, 96, 15, 0.626);
+    border: solid rgba(37, 96, 15, 0.543); 
+}
+
+.checkbox-group label {
+    cursor: pointer;
+}
+
+.create-account-button {
+    margin-top: 150px;
+    margin-left: 800px;
+    font-family: fantasy;
+    font-size: 23px;
+    width: 250px;
+    height: 70px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgba(0, 0, 0, 0.895);
+    box-shadow: 2px 4px  rgba(37, 96, 15, 0.505);
+    border: solid  rgba(37, 96, 15, 0.53);
+    background-color:   rgba(25, 64, 10, 0.765);
+    cursor: pointer;
+}
+
+.create-account-button:hover  {
+    background-color:   rgba(37, 96, 15, 0.495);
+}  
