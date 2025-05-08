@@ -1,26 +1,56 @@
 body {
-    background-color: rgba(205, 239, 52, 0.918);
+    background-image: url(backgroundMainPage.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.container {
-    background-color: white;
-    box-shadow: 10px 10px rgba(22, 26, 22, 0.176);
-    width: 1150px;
-    height: 770px;
-    margin-top: -550px;
-    margin-left: 70px;
-}
-
-.charity-image {
-    background-image: url(charity.jpg);
+.people-image1 {
+    background-image: url(image2.jpg);
     background-size: cover;
-    width: 720px;
-    height: 690px;
-    margin-top: -690px;
-    margin-left: 70px; 
-}
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    border: 2px solid rgba(60, 164, 22, 0.829);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+    margin-top: -430px;
+    margin-left: 750px; 
+} 
+
+.people-image2 {
+    background-image: url(image1.jpg);
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    border: 2px solid rgba(60, 164, 22, 0.829);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+    margin-top: -100px;
+    margin-left: 1000px; 
+} 
+
+.people-image3 {
+    background-image: url(image3.jpg);
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    border: 2px solid rgba(60, 164, 22, 0.829);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+    margin-top: -50px;
+    margin-left: 750px; 
+} 
+
+.food-image4 {
+    background-image: url(image4.jpg);
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    border: 2px solid rgba(60, 164, 22, 0.829);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+    margin-top: -80px;
+    margin-left: 1000px; 
+} 
 
 .start-screen {
     text-align: center;
@@ -29,11 +59,22 @@ body {
 
 .title {
     font-family: fantasy;
-    font-size: 70px;
+    font-size: 50px;
     font-weight: bold;
-    color: rgba(15, 33, 19, 0.929);
-    margin-left: 700px; 
-    margin-top: -100px;
+    color:  rgba(15, 33, 19, 0.929);
+    margin-left: -1050px; 
+    margin-top: -150px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+}
+
+.subtitle {
+    font-family: fantasy;
+    font-size: 100px;
+    font-weight: bold;
+    color: rgba(36, 96, 15, 0.829);
+    margin-left: -550px; 
+    margin-top: -10px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
 }
 
 .quote {
@@ -41,21 +82,23 @@ body {
     font-size: 40px;
     font-weight: bold;
     color: rgba(15, 33, 19, 0.929);
-    margin-left: 700px; 
-    margin-top: 70px;
+    margin-left: -570px; 
+    margin-top: 50px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 .author {
     font-family: fantasy;
     font-size: 20px;
     font-weight: bold;
     color: rgba(15, 33, 19, 0.929);
-    margin-left: 700px; 
+    margin-left: -570px; 
     margin-top: 30px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
 .login-button {
-    margin-top: -100px;
-    margin-left: 780px;
+    margin-top: -50px;
+    margin-left: 150px;
     font-family: fantasy;
     font-size: 23px;
     width: 120px;
@@ -65,19 +108,18 @@ body {
     justify-content: center;
     align-items: center;
     color: rgba(0, 0, 0, 0.895);
-    box-shadow: 2px 4px  rgba(205, 239, 52, 0.479);
-    border: solid rgba(205, 239, 52, 0.783);
-    background-color:  rgba(205, 239, 52, 0.918);
+    box-shadow: 2px 4px  rgba(37, 96, 15, 0.626);
+    border: solid  rgba(36, 96, 15, 0.829);
+    background-color:   rgba(36, 96, 15, 0.829);
     cursor: pointer;
 }
 
 .login-button:hover {
-    background-color:  rgba(180, 215, 23, 0.808);
-}
+    background-color:   rgba(37, 96, 15, 0.495);}
 
 .create-account-button {
     margin-top: -50px;
-    margin-left: 950px;
+    margin-left: 300px;
     font-family: fantasy;
     font-size: 23px;
     width: 220px;
@@ -87,12 +129,34 @@ body {
     justify-content: center;
     align-items: center;
     color:rgba(0, 0, 0, 0.895);
-    box-shadow: 2px 4px  rgba(205, 239, 52, 0.479);
-    border: solid rgba(205, 239, 52, 0.783);
-    background-color:  rgba(205, 239, 52, 0.918);
+    box-shadow: 2px 4px  rgba(37, 96, 15, 0.626);
+    border: solid  rgba(36, 96, 15, 0.829);
+    background-color:   rgba(36, 96, 15, 0.829);
     cursor: pointer;
 }
 
 .create-account-button:hover  {
-    background-color:  rgba(180, 215, 23, 0.808);
+    background-color:   rgba(37, 96, 15, 0.495);
+}  
+
+.about-us-button {
+    margin-top: -550px;
+    margin-left: 1020px;
+    font-family: fantasy;
+    font-size: 23px;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgba(0, 0, 0, 0.895);
+    box-shadow: 2px 4px  rgba(37, 96, 15, 0.626);
+    border: solid  rgba(36, 96, 15, 0.829);
+    background-color:   rgba(36, 96, 15, 0.829);
+    cursor: pointer;
+}
+
+.about-us-button:hover  {
+    background-color:   rgba(37, 96, 15, 0.495);
 }  
