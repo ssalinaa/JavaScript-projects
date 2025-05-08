@@ -17,17 +17,18 @@ body {
     justify-content: center;  
     align-items: center;      
     text-align: center;
-    height: 200px;  
+    height: 500px;  
     width: 500px;          
     border-radius: 40px;
     margin-top: 20px;
-    border: 7px solid  rgba(15, 33, 19, 0.929);
+    margin-left: 700px;
+    border: 5px solid  rgba(15, 33, 19, 0.651);
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
 }
 
 .p1 {
     font-family: verdana;
-    font-size: 17px;
+    font-size: 25px;
     font-weight: bold;
     margin-left: -550px; 
     margin-top: -10px;
@@ -42,18 +43,18 @@ body {
     justify-content: center;  
     align-items: center;      
     text-align: center;
-    height: 200px;  
-    width: 500px;               
+    height: 400px;  
+    width: 500px;          
     border-radius: 40px;
-    margin-top: 30px;
-    margin-left: 740px;
-    border: 7px solid  rgba(15, 33, 19, 0.929);
+    margin-top: 50px;
+    margin-left: 40px;
+    border: 5px solid  rgba(15, 33, 19, 0.651);
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
-}
+} 
 
 .p2 {
     font-family: verdana;
-    font-size: 17px;
+    font-size: 25px;
     font-weight: bold;
     margin-left: -550px; 
     margin-top: -10px;
@@ -61,7 +62,7 @@ body {
     margin: 0;
     color: rgba(36, 96, 15, 0.829);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
-}
+} 
 
 .image1 {
     background-image: url(people1.jpg);
@@ -70,8 +71,8 @@ body {
     height: 200px;
     border-radius: 20px;
     box-shadow: 4px 4px 6px rgba(243, 240, 240, 0.6);
-    margin-top: -200px;
-    margin-left: 330px;
+    margin-top: -950px;
+    margin-left: 250px;
 } 
 
 .image2 {
@@ -80,10 +81,10 @@ body {
     width: 350px;
     height: 250px;
     border-radius: 50%;
-    margin-top: -480px;
-    margin-left: 900px; 
+    margin-top: 550px;
+    margin-left: 860px; 
     box-shadow: 4px 4px 6px rgba(239, 230, 230, 0.6);
-} 
+}  
 
 .image3 {
     background-image: url(donation3.jpg);
@@ -91,10 +92,10 @@ body {
     width: 300px;
     height: 200px;
     border-radius: 20px;
-    margin-top: -210px;
-    margin-left: 560px; 
+    margin-top: -450px;
+    margin-left: 600px; 
     box-shadow: 4px 4px 6px rgba(239, 230, 230, 0.6);
-} 
+}  
 
 .image4 {
     background-image: url(donation4.jpg);
@@ -103,6 +104,7 @@ body {
     height: 220px;
     border-radius: 20px;
     border-radius: 50%;
-    margin-top: 40px;
+    margin-top: -500px;
+    margin-left: 50px;
     box-shadow: 4px 4px 6px rgba(243, 240, 240, 0.6);
 } 
