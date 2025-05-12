@@ -28,7 +28,8 @@
 			b.material = Mecho.WHITE;
 			b.followed = true;
             btn = button('start','space',start,3);
-            btn1 = button('light', 'ENTER', myLight, 3);
+            btn1 = button('show', 'esc', myShow, 3);
+            btn2 = button('light', 'ENTER', myLight, 3);
             
             // Тяло на десен десен
             robot1 = part(null, 0.5, 1, 0.7, [6, 3.5, 1.4]);
@@ -570,7 +571,7 @@
 			stopTime = Mecho.time + T;			
 			b.center = robot8.center;
 			b.center = robot4.center;
-			b.center = [random(3,5),random(5,3),random(6,2)];
+			b.center = [random(3,5),random(5,7),random(6,2)];
             // лява ръка 
             arm1_4.rotH = 20 * ksin(2  * t);
             arm1_4.rotV = 20 * ksin(3  * t);
@@ -578,6 +579,21 @@
             arm2_4.rotV = 20 * ksin(2 * t);
             arm2_4.rotH = 10 * ksin(3 * t);
 		}
+        
+        var message = text('Натисни бутона Show', [0, 0, 5], 0.5);
+        // Скриваме всичко без надписа
+        var allObjects = scene.children;
+        for (var i = 0; i < allObjects.length; i++) {
+            if (allObjects[i] !== message) {
+                allObjects[i].visible = false;
+            }
+        }
+        function myShow() {
+            message.visible = false;
+            for (var i = 0; i < allObjects.length; i++) {
+            allObjects[i].visible = true;
+            }
+        }
         
         var isDay = true; 
         function myLight() {

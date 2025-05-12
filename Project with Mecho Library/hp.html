@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+
+	<link rel="stylesheet" type="text/css" href="mecho.css">
+	<script src="mechoff.min.js"></script>
+
+    <script>
+        var T = 1;
+		var stopTime = 0;
+        var armMoving = false;
+        function part(parent,sx,sy,sz, position)
+		{
+			var k1 = sy>0.5?1.5:1.2;
+			var k2 = sy>0.5?1.5:1.3;
+			var a = box(position,sx,sy,sz,1.5*sy,k1*sz,k2*sz);
+			a.parent = parent;
+			return a;
+		}
+
+        function main() {
+
+            scene = new Mecho();
+            scene.sky = [0.5, 0.3, 0.4];
+            scene.ground = Mecho.GOLD;
+            scene.onTime = animate;
+            btn = button('start','space',start,3);
+            btn1 = button('show', 'esc', myShow, 3);
+            btn2 = button('light', 'ENTER', myLight, 3);
+            
+		}
+        var message = text('Натисни бутона Show', [0, 0, 5], 0.5);
+        // Скриваме всичко без надписа
+        var allObjects = scene.children;
+        for (var i = 0; i < allObjects.length; i++) {
+            if (allObjects[i] !== message) {
+                allObjects[i].visible = false;
+            }
+        }
+        function myShow() {
+            message.visible = false;
+            for (var i = 0; i < allObjects.length; i++) {
+            allObjects[i].visible = true;
+            }
+        }
+        
+        var isDay = true; 
+        function myLight() {
+            if (isDay) {
+            scene.sky = [0, 0, 0.2]; 
+            isDay = false;       
+            } else {
+                scene.sky = [0.5, 0.8, 1]; 
+                isDay = true;
+            }
+        }
+
+    </script>
+</head>
+
+<body onload="main()">
+    <!-- Тук може да има друг HTML съдържание, ако е необходимо -->
+</body>

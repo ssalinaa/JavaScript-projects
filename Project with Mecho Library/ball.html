@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8"/>
+
+	<link rel="stylesheet" type="text/css" href="mecho.css">
+	<script src="mechoff.min.js"></script>
+
+	<script>
+		var T = 4;
+		var stopTime = 0;
+		
+		function main()
+		{
+			scene = new Mecho();
+			scene.onTime = animate;
+			
+			p = box([0,0,-10],1.5);
+			p.material = Mecho.RED;
+
+			q = box([random(-20,20),random(-20,20),random(0,5)],1.5);
+			q.material = Mecho.RED;
+
+			a = ball([0,0,0],2);
+			a.material = Mecho.YELLOW;
+			a.followed = true;
+			
+			button('start','space',start);
+		}
+		
+		function start()
+		{
+			// ново крайно време след T секунди
+			stopTime = Mecho.time+T;
+			
+			// Q става P, а после Q се премества на ново
+			// случайно място; отместването 0.75 е защото
+			// "центърът" на куба е на долната му стена
+			p.center = q.center;
+			q.center = [random(-20,20),random(-20,20),random(0,5)];
+			a.center = [p.center[0],p.center[1],p.center[2]+0.75];
+		}
+		
+		var k = 0;
+		function animate()
+		{
+			if (Mecho.time<=stopTime)
+			{
+				// докато има време, позицията на A се получава
+				// като добавим малко векторче, според изминалото
+				// време dTime
+				a.center.x += (q.center.x-p.center.x)*Mecho.dTime/T;
+				a.center.y += (q.center.y-p.center.y)*Mecho.dTime/T;
+				a.center.z += (q.center.z-p.center.z)*Mecho.dTime/T;
+			}
+			else
+			{
+				// няма време, A си стои в Q
+				a.center = [q.center.x,q.center.y,q.center.z+0.75];
+			}
+		}
+		
+	</script>
+</head>
+
+<body onload="main()">
+	<h1>№3.2.5. От точка до точка</h1>
+	<h2>(движение чрез вектор на скоростта)</h2>
+</body>
