@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interactive Movie Library</title>
+    
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body>
+    <div class="main-container">
+      <header class="main-header">
+        <div class="header-content">
+          <div class="logo-group">
+             <img src="https://cdn.pixabay.com/photo/2015/01/11/18/36/film-596519_640.jpg" class="logo">            
+            <h1 class="main-title">Interactive Movie Library</h1>
+          </div>
+          <div class="header-button">
+              <button id="clearFavoritesButton" class="button button-clear">Clear Favorites</button>
+          </div>
+        </div>
+        
+        <div class="search-container">
+          <div class="input-container">
+            <input id="searchInput" type="text" placeholder="Search movie" class="search-input">
+          </div>
+
+          <div class="button-group">
+            <button id="searchButton" class="button button-search">Search</button>
+            <button id="loadMoreButton" class="button button-load">Load More</button>
+          </div>
+        </div>
+      </header>
+      
+      <div class="tabs">
+        <button id="tabResults" class="tab-button results">Results</button>
+        <button id="tabFavorites" class="tab-button favorites">Favorites</button>
+      </div>
+      
+      <div class="main-content-grid">
+        <main>
+          <section id="resultsSection">
+            <div id="statusBar" class="status-bar hidden"></div>
+            <div id="resultsGrid" class="movie-grid"></div>
+          </section>
+          
+          <section id="favoritesSection" class="hidden">
+            <h2 class="section-title">Favorites</h2>
+            <div id="favoritesGrid" class="movie-grid"></div>
+          </section>
+        </main>
+        
+        <aside id="favoritesQuickView" class="quick-view">
+          <div class="quick-view-panel">
+            <h3 class="quick-view-title">Favorites (Quick View)</h3>
+            <ul id="favoritesQuickViewList" class="quick-view-list"></ul>
+            <div class="quick-view-button-container">
+              <button onclick="switchTab('favorites')" class="quick-view-button">Go to Favorites</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+    
+    <div id="modalRoot" class="hidden modal-container"></div>
+    
+    <template id="movieCard">
+      <article class="movie-card">
+        <div class="poster-container">
+          <img class="poster" alt="Poster">
+        </div>
+        <div class="card-body">
+          <div class="card-header">
+            <h3 class="card-title"></h3>
+            <span class="card-year"></span>
+          </div>
+          <div class="card-actions">
+            <button data-action="details" class="action-button details-button">Details</button>
+            <button data-action="toggle-favorite" class="action-button add-favorite">Add to favorites</button>
+          </div>
+        </div>
+      </article>
+    </template>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
